@@ -1,5 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:find_recipes/models/recipe_model.dart';
+import 'package:find_recipes/ui/recipes/recipe_details.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:transparent_image/transparent_image.dart';
@@ -12,109 +13,117 @@ class RecipeCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.fromLTRB(15, 0, 10, 0),
-      child: Container(
-        width: MediaQuery.of(context).size.width * 0.92,
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(30.0),
-          child: Container(
-            color: Colors.orange[50],
-            child: Column(
-              children: <Widget>[
-                Stack(
-                  children: <Widget>[
-                    Container(
-                        height: 251,
-                        child: Center(child: CircularProgressIndicator())),
-                    Center(
-                      child: FadeInImage.memoryNetwork(
-                        placeholder: kTransparentImage,
-                        image: recipe.image,
-                        fit: BoxFit.fill,
-                      ),
-                    ),
-                  ],
-                ),
-                // COLUMN 2 - RECIPE TITLE
-                Expanded(
-                  child: Container(
-                    alignment: Alignment.center,
-                    padding: const EdgeInsets.all(10),
-                    child: AutoSizeText(
-                      recipe.title,
-                      style: Theme.of(context).textTheme.headline4,
-                      minFontSize: 12,
-                    ),
-                  ),
-                ),
-                // COLUMN 3 - RECIPE INFO
-                Expanded(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      child: InkWell(
+        onTap: () => Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => RecipeDetails(recipe: recipe)),
+        ),
+        child: Container(
+          width: MediaQuery.of(context).size.width * 0.92,
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(30.0),
+            child: Container(
+              color: Colors.orange[50],
+              child: Column(
+                children: <Widget>[
+                  Stack(
                     children: <Widget>[
-                      _infoItem(
-                        item: Text('Score'),
-                        value: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            FaIcon(FontAwesomeIcons.star, color: Colors.orange),
-                            Text(
-                              ' ${recipe.score.toInt()}',
-                            ),
-                          ],
+                      Container(
+                          height: 251,
+                          child: Center(child: CircularProgressIndicator())),
+                      Center(
+                        child: FadeInImage.memoryNetwork(
+                          placeholder: kTransparentImage,
+                          image: recipe.image,
+                          fit: BoxFit.fill,
                         ),
                       ),
-                      _verticalDivider(),
-                      _infoItem(
-                        item: Text('Health Score'),
-                        value: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            FaIcon(
-                              FontAwesomeIcons.heartbeat,
-                              color: Colors.red,
-                            ),
-                            Text(' ${recipe.healthScore.toInt()}'),
-                          ],
+                    ],
+                  ),
+                  // COLUMN 2 - RECIPE TITLE
+                  Expanded(
+                    child: Container(
+                      alignment: Alignment.center,
+                      padding: const EdgeInsets.all(10),
+                      child: AutoSizeText(
+                        recipe.title,
+                        style: Theme.of(context).textTheme.headline4,
+                        minFontSize: 12,
+                      ),
+                    ),
+                  ),
+                  // COLUMN 3 - RECIPE INFO
+                  Expanded(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: <Widget>[
+                        _infoItem(
+                          item: Text('Score'),
+                          value: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              FaIcon(FontAwesomeIcons.star,
+                                  color: Colors.orange),
+                              Text(
+                                ' ${recipe.score.toInt()}',
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                      _verticalDivider(),
-                      _infoItem(
-                          item: Text('Vegetarian'),
-                          value: recipe.vegetarian
-                              ? FaIcon(FontAwesomeIcons.check,
-                                  color: Colors.green)
-                              : FaIcon(FontAwesomeIcons.times,
-                                  color: Colors.red))
-                    ],
+                        _verticalDivider(),
+                        _infoItem(
+                          item: Text('Health Score'),
+                          value: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              FaIcon(
+                                FontAwesomeIcons.heartbeat,
+                                color: Colors.red,
+                              ),
+                              Text(' ${recipe.healthScore.toInt()}'),
+                            ],
+                          ),
+                        ),
+                        _verticalDivider(),
+                        _infoItem(
+                            item: Text('Vegetarian'),
+                            value: recipe.vegetarian
+                                ? FaIcon(FontAwesomeIcons.check,
+                                    color: Colors.green)
+                                : FaIcon(FontAwesomeIcons.times,
+                                    color: Colors.red))
+                      ],
+                    ),
                   ),
-                ),
-                // COLOUMN 4 -RECIPE INFO
-                Expanded(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: <Widget>[
-                      _infoItem(
-                        item: FaIcon(FontAwesomeIcons.utensils,
-                            color: Colors.grey[600]),
-                        value: Text('${recipe.servings} people'),
-                      ),
-                      _verticalDivider(),
-                      _infoItem(
-                        item: FaIcon(FontAwesomeIcons.clock),
-                        value: Text(' ${recipe.readyInMinutes} min'),
-                      ),
-                      _verticalDivider(),
-                      _infoItem(
-                          item: Text('Glutten Free'),
-                          value: recipe.glutenFree
-                              ? FaIcon(FontAwesomeIcons.check,
-                                  color: Colors.green)
-                              : FaIcon(FontAwesomeIcons.times,
-                                  color: Colors.red))
-                    ],
+                  // COLOUMN 4 -RECIPE INFO
+                  Expanded(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: <Widget>[
+                        _infoItem(
+                          item: FaIcon(FontAwesomeIcons.utensils,
+                              color: Colors.grey[600]),
+                          value: Text('${recipe.servings} people'),
+                        ),
+                        _verticalDivider(),
+                        _infoItem(
+                          item: FaIcon(FontAwesomeIcons.clock),
+                          value: Text(' ${recipe.readyInMinutes} min'),
+                        ),
+                        _verticalDivider(),
+                        _infoItem(
+                            item: Text('Glutten Free'),
+                            value: recipe.glutenFree
+                                ? FaIcon(FontAwesomeIcons.check,
+                                    color: Colors.green)
+                                : FaIcon(FontAwesomeIcons.times,
+                                    color: Colors.red))
+                      ],
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),
