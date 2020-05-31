@@ -2,6 +2,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:find_recipes/models/recipe_model.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:transparent_image/transparent_image.dart';
 
 class RecipeCard extends StatelessWidget {
   const RecipeCard({Key key, this.recipe}) : super(key: key);
@@ -19,9 +20,19 @@ class RecipeCard extends StatelessWidget {
             color: Colors.orange[50],
             child: Column(
               children: <Widget>[
-                Image.network(
-                  recipe.image,
-                  fit: BoxFit.fill,
+                Stack(
+                  children: <Widget>[
+                    Container(
+                        height: 251,
+                        child: Center(child: CircularProgressIndicator())),
+                    Center(
+                      child: FadeInImage.memoryNetwork(
+                        placeholder: kTransparentImage,
+                        image: recipe.image,
+                        fit: BoxFit.fill,
+                      ),
+                    ),
+                  ],
                 ),
                 // COLUMN 2 - RECIPE TITLE
                 Expanded(
