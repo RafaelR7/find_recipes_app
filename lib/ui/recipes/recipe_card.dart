@@ -10,34 +10,33 @@ class RecipeCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(right: 10.0),
+      padding: const EdgeInsets.only(right: 20.0),
       child: Container(
         width: MediaQuery.of(context).size.width * 0.94,
         child: ClipRRect(
           borderRadius: BorderRadius.circular(30.0),
-          child: Column(
-            children: <Widget>[
-              Image.network(
-                recipe.image,
-                fit: BoxFit.fill,
-              ),
-              // COLUMN 2 - RECIPE TITLE
-              Expanded(
-                child: Container(
-                  color: Colors.white70,
-                  alignment: Alignment.center,
-                  padding: const EdgeInsets.all(10),
-                  child: AutoSizeText(
-                    recipe.title,
-                    style: Theme.of(context).textTheme.headline4,
-                    minFontSize: 12,
+          child: Container(
+            color: Colors.orange[50],
+            child: Column(
+              children: <Widget>[
+                Image.network(
+                  recipe.image,
+                  fit: BoxFit.fill,
+                ),
+                // COLUMN 2 - RECIPE TITLE
+                Expanded(
+                  child: Container(
+                    alignment: Alignment.center,
+                    padding: const EdgeInsets.all(10),
+                    child: AutoSizeText(
+                      recipe.title,
+                      style: Theme.of(context).textTheme.headline4,
+                      minFontSize: 12,
+                    ),
                   ),
                 ),
-              ),
-              // COLUMN 3 - RECIPE INFO
-              Expanded(
-                child: Container(
-                  color: Colors.white70,
+                // COLUMN 3 - RECIPE INFO
+                Expanded(
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: <Widget>[
@@ -78,11 +77,8 @@ class RecipeCard extends StatelessWidget {
                     ],
                   ),
                 ),
-              ),
-              // COLOUMN 4 -RECIPE INFO
-              Expanded(
-                child: Container(
-                  color: Colors.white70,
+                // COLOUMN 4 -RECIPE INFO
+                Expanded(
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: <Widget>[
@@ -107,8 +103,8 @@ class RecipeCard extends StatelessWidget {
                     ],
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

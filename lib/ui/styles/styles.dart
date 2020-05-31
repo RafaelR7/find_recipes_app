@@ -30,9 +30,9 @@ class Styles {
     ),
   );
 
-  static TextStyle splashScreenText = TextStyle(
+  static TextStyle homeTitle = TextStyle(
     color: Colors.white,
-    fontSize: 34,
-    fontFamily: defaultFontRegular,
+    fontSize: 60,
+    fontFamily: 'Satisfy',
   );
 }
