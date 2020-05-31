@@ -13,5 +13,6 @@ abstract class _RecipesBase with Store {
   @action
   fecthRecipes() async {
     recipes = await SpoonacularAPI().fecthRecipes();
+    print(recipes.length);
   }
 }

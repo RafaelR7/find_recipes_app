@@ -7,9 +7,8 @@ class Styles {
   static ThemeData customTheme = ThemeData(
     fontFamily: defaultFontRegular,
     brightness: Brightness.light,
-    primaryColor: Colors.orange,
+    primaryColor: Colors.white,
     backgroundColor: Colors.orange[50],
-    // iconTheme: IconThemeData(color: Colors.blue),
     textTheme: TextTheme(
       headline1: TextStyle(color: Colors.grey[700], fontSize: 96),
       headline2: TextStyle(color: Colors.grey[700], fontSize: 60),

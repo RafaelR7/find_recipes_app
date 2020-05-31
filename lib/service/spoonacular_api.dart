@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:find_recipes/models/recipe_model.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';

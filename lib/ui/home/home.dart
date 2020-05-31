@@ -57,8 +57,10 @@ class _HomeState extends State<Home> {
           ),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Colors.blue,
         onTap: _onItemTapped,
+        selectedLabelStyle:
+            TextStyle(fontWeight: FontWeight.bold, fontSize: 13),
+        selectedIconTheme: IconThemeData(size: 30),
       ),
     );
   }

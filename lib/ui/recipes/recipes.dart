@@ -5,14 +5,24 @@ import 'package:find_recipes/ui/styles/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 
-class Recipes extends StatelessWidget {
+class Recipes extends StatefulWidget {
   const Recipes({Key key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    final RecipesStore recipesStore = RecipesStore();
-    // recipesStore.fecthRecipes();
+  _RecipesState createState() => _RecipesState();
+}
 
+class _RecipesState extends State<Recipes> {
+  final RecipesStore recipesStore = RecipesStore();
+
+  @override
+  void initState() {
+    super.initState();
+    // recipesStore.fecthRecipes();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return SafeArea(
       child: Container(
         child: Column(
@@ -38,7 +48,7 @@ class Recipes extends StatelessWidget {
                   borderRadius: BorderRadius.only(topLeft: Radius.circular(30)),
                 ),
                 child: Padding(
-                  padding: const EdgeInsets.fromLTRB(15, 30, 0, 30),
+                  padding: const EdgeInsets.fromLTRB(0, 30, 0, 30),
                   child: Observer(
                     builder: (_) {
                       // if (recipesStore.recipes == null) {

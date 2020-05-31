@@ -10,9 +10,9 @@ class RecipeCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(right: 20.0),
+      padding: const EdgeInsets.fromLTRB(15, 0, 10, 0),
       child: Container(
-        width: MediaQuery.of(context).size.width * 0.94,
+        width: MediaQuery.of(context).size.width * 0.92,
         child: ClipRRect(
           borderRadius: BorderRadius.circular(30.0),
           child: Container(
