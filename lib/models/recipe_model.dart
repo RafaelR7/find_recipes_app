@@ -26,21 +26,33 @@ class RecipeModel {
   });
 
   factory RecipeModel.fromJson(Map<String, dynamic> parsedJson) {
+    String removeAllHtmlTags(String htmlText) {
+      RegExp exp = RegExp(r"<[^>]*>", multiLine: true, caseSensitive: true);
+      return htmlText.replaceAll(exp, '');
+    }
+
     var list = parsedJson['extendedIngredients'] as List;
     List<IngredientModel> ingredientList =
         list.map((i) => IngredientModel.fromJson(i)).toList();
+
+    String instructions = removeAllHtmlTags(parsedJson['instructions']);
 
     return RecipeModel(
       title: parsedJson['title'],
       image: parsedJson['image'],
       score: parsedJson['spoonacularScore'],
       healthScore: parsedJson['healthScore'],
-      instructions: parsedJson['instructions'],
+      instructions: instructions,
       servings: parsedJson['servings'],
       readyInMinutes: parsedJson['readyInMinutes'],
       vegetarian: parsedJson['vegetarian'],
       glutenFree: parsedJson['glutenFree'],
       ingredients: ingredientList,
     );
+  }
+
+  String removeAllHtmlTags(String htmlText) {
+    RegExp exp = RegExp(r"<[^>]*>", multiLine: true, caseSensitive: true);
+    return htmlText.replaceAll(exp, '');
   }
 }

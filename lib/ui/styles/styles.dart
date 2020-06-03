@@ -31,7 +31,16 @@ class Styles {
 
   static TextStyle homeTitle = TextStyle(
     color: Colors.white,
-    fontSize: 60,
+    fontSize: 50,
     fontFamily: 'Satisfy',
+  );
+
+  static TextStyle recipeDetailsBody = TextStyle(
+    height: 1.5,
+  );
+
+  static TextStyle bottomNavigationTitle = TextStyle(
+    fontFamily: 'Satisfy',
+    color: Colors.white,
   );
 }

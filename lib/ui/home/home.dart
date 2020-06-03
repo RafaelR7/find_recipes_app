@@ -38,29 +38,30 @@ class _HomeState extends State<Home> {
             icon: Icon(Icons.restaurant_menu, color: Colors.white),
             title: Text(
               'Recipes',
-              style: TextStyle(color: Colors.white),
+              style: TextStyle(
+                  color: Colors.white, fontFamily: 'Satisfy', fontSize: 18),
             ),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.search, color: Colors.white),
             title: Text(
               'Find Recipe',
-              style: TextStyle(color: Colors.white),
+              style: TextStyle(
+                  color: Colors.white, fontFamily: 'Satisfy', fontSize: 18),
             ),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.bookmark, color: Colors.white),
             title: Text(
               'My Recipes',
-              style: TextStyle(color: Colors.white),
+              style: TextStyle(
+                  color: Colors.white, fontFamily: 'Satisfy', fontSize: 18),
             ),
           ),
         ],
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,
-        selectedLabelStyle:
-            TextStyle(fontWeight: FontWeight.bold, fontSize: 13),
-        selectedIconTheme: IconThemeData(size: 30),
+        selectedLabelStyle: TextStyle(fontWeight: FontWeight.bold),
       ),
     );
   }
