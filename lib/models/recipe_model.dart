@@ -9,6 +9,8 @@ class RecipeModel {
   int servings;
   int readyInMinutes;
   bool vegetarian;
+  bool vegan;
+  bool dairyFree;
   bool glutenFree;
   List<IngredientModel> ingredients;
 
@@ -21,6 +23,8 @@ class RecipeModel {
     this.servings,
     this.readyInMinutes,
     this.vegetarian,
+    this.vegan,
+    this.dairyFree,
     this.glutenFree,
     this.ingredients,
   });
@@ -46,6 +50,8 @@ class RecipeModel {
       servings: parsedJson['servings'],
       readyInMinutes: parsedJson['readyInMinutes'],
       vegetarian: parsedJson['vegetarian'],
+      vegan: parsedJson['vegan'],
+      dairyFree: parsedJson['dairyFree'],
       glutenFree: parsedJson['glutenFree'],
       ingredients: ingredientList,
     );

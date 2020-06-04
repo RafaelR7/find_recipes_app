@@ -57,21 +57,30 @@ class RecipeCard extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: <Widget>[
                         _infoItem(
-                          item: Text('Score'),
+                          item: Text(
+                            'Score',
+                            style: Theme.of(context).textTheme.headline6,
+                          ),
                           value: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
-                              FaIcon(FontAwesomeIcons.star,
-                                  color: Colors.orange),
+                              FaIcon(
+                                FontAwesomeIcons.star,
+                                color: Colors.orange,
+                              ),
                               Text(
                                 ' ${recipe.score.toInt()}',
+                                style: Theme.of(context).textTheme.headline6,
                               ),
                             ],
                           ),
                         ),
                         _verticalDivider(),
                         _infoItem(
-                          item: Text('Health'),
+                          item: Text(
+                            'Health Score',
+                            style: Theme.of(context).textTheme.headline6,
+                          ),
                           value: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
@@ -79,56 +88,95 @@ class RecipeCard extends StatelessWidget {
                                 FontAwesomeIcons.heartbeat,
                                 color: Colors.red,
                               ),
-                              Text(' ${recipe.healthScore.toInt()}'),
+                              Text(
+                                ' ${recipe.healthScore.toInt()}',
+                                style: Theme.of(context).textTheme.headline6,
+                              ),
                             ],
                           ),
                         ),
-                        _verticalDivider(),
-                        _infoItem(
-                            item: Text('Vegetarian'),
-                            value: recipe.vegetarian
-                                ? FaIcon(FontAwesomeIcons.check,
-                                    color: Colors.green)
-                                : FaIcon(FontAwesomeIcons.times,
-                                    color: Colors.red))
                       ],
                     ),
                   ),
-                  // COLOUMN 4 -RECIPE INFO
+                  // COLOUMN 4 -RECIPE INFO chips
                   Expanded(
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: <Widget>[
-                        _infoItem(
-                          item: FaIcon(FontAwesomeIcons.utensils,
-                              color: Colors.grey[600]),
-                          value: Text('${recipe.servings} people'),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: <Widget>[
+                            buildChip(
+                                icon: FaIcon(
+                                  FontAwesomeIcons.seedling,
+                                  size: 16,
+                                  color: Colors.green,
+                                ),
+                                color: Colors.green,
+                                item: "Vegan",
+                                isTrue: recipe.vegan),
+                            buildChip(
+                                icon: FaIcon(
+                                  FontAwesomeIcons.leaf,
+                                  size: 16,
+                                  color: Colors.green,
+                                ),
+                                color: Colors.green,
+                                item: "Vegatarian",
+                                isTrue: recipe.vegetarian),
+                            SizedBox(
+                              height: 10,
+                            )
+                          ],
                         ),
-                        _verticalDivider(),
-                        _infoItem(
-                          item: FaIcon(FontAwesomeIcons.clock),
-                          value: Text(' ${recipe.readyInMinutes} min'),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: <Widget>[
+                            buildChip(
+                                icon: FaIcon(
+                                  FontAwesomeIcons.pagelines,
+                                  size: 16,
+                                  color: Colors.brown,
+                                ),
+                                color: Colors.green,
+                                item: "Gluten Free",
+                                isTrue: recipe.glutenFree),
+                            buildChip(
+                                icon: FaIcon(
+                                  FontAwesomeIcons.wineBottle,
+                                  size: 16,
+                                  color: Colors.brown,
+                                ),
+                                color: Colors.green,
+                                item: "Dairy Free",
+                                isTrue: recipe.dairyFree),
+                            SizedBox(
+                              height: 10,
+                            )
+                          ],
                         ),
-                        _verticalDivider(),
-                        _infoItem(
-                            item: Text('Glutten Free'),
-                            value: recipe.glutenFree
-                                ? FaIcon(FontAwesomeIcons.check,
-                                    color: Colors.green)
-                                : FaIcon(FontAwesomeIcons.times,
-                                    color: Colors.red))
                       ],
                     ),
                   ),
-                  SizedBox(
-                    height: 20,
-                  )
                 ],
               ),
             ),
           ),
         ),
       ),
+    );
+  }
+
+  Chip buildChip({FaIcon icon, Color color, String item, bool isTrue}) {
+    return Chip(
+      backgroundColor: Colors.orange[100],
+      avatar: icon,
+      label: isTrue
+          ? Text('$item')
+          : Text(
+              '$item',
+              style: TextStyle(decoration: TextDecoration.lineThrough),
+            ),
     );
   }
 
@@ -145,10 +193,7 @@ class RecipeCard extends StatelessWidget {
     return Expanded(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: <Widget>[
-          item,
-          value,
-        ],
+        children: <Widget>[item, value, SizedBox(height: 20)],
       ),
     );
   }

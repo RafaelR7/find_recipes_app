@@ -19,7 +19,7 @@ class _RecipesState extends State<Recipes> {
   @override
   void initState() {
     super.initState();
-    // recipesStore.fecthRecipes();
+    recipesStore.fecthRecipes();
   }
 
   @override
@@ -41,7 +41,7 @@ class _RecipesState extends State<Recipes> {
       ..vegetarian = true
       ..glutenFree = true
       ..instructions =
-          '*Wash rice by rubbing the rice between your palms in a bowl of water and draining the water till clear.Blend tomatoes, pepper and garlic and bring to boil till the excess water dries up.Chop OnionsHeat up vegetable oil and pour in chopped onions and fry. Pour in the can of tomato puree and fry.Pour in blended tomato and pepper mix into the pot and stir in. Pour in salt, dry pepper, curry, thyme, bay leaves and maggi cubes.Allow it to simmer on low heat for 3 minutes.Reduce the heat to the lowest level and pour in the washed rice. Pour in the water and stir and leave on low heat for 20 minutes or till the rice is soft.Tip: To get the party rice flavor, increase the heat on the rice and burn the bottom of the pot with the pot covered and stir the rice after 3 minutes of burning.Stir the rice and serve with any protein of your choice.  // <![CDATA[(adsbygoogle = window.adsbygoogle || []).push({});// ]]&gt;A video I shared on Instagram recently';
+          'Wash rice by rubbing the rice between your palms in a bowl of water and draining the water till clear.Blend tomatoes, pepper and garlic and bring to boil till the excess water dries up.Chop OnionsHeat up vegetable oil and pour in chopped onions and fry. Pour in the can of tomato puree and fry.Pour in blended tomato and pepper mix into the pot and stir in. Pour in salt, dry pepper, curry, thyme, bay leaves and maggi cubes.Allow it to simmer on low heat for 3 minutes.Reduce the heat to the lowest level and pour in the washed rice. Pour in the water and stir and leave on low heat for 20 minutes or till the rice is soft.Tip: To get the party rice flavor, increase the heat on the rice and burn the bottom of the pot with the pot covered and stir the rice after 3 minutes of burning.Stir the rice and serve with any protein of your choice.  // <![CDATA[(adsbygoogle = window.adsbygoogle || []).push({});// ]]&gt;A video I shared on Instagram recently';
     return SafeArea(
       child: Container(
         child: Column(
@@ -70,17 +70,17 @@ class _RecipesState extends State<Recipes> {
                   padding: const EdgeInsets.fromLTRB(0, 30, 0, 30),
                   child: Observer(
                     builder: (_) {
-                      // if (recipesStore.recipes == null) {
-                      //   return Center(child: CircularProgressIndicator());
-                      // }
+                      if (recipesStore.recipes == null) {
+                        return Center(child: CircularProgressIndicator());
+                      }
                       return ListView.builder(
                         scrollDirection: Axis.horizontal,
-                        itemCount: 25,
-                        // itemCount: recipesStore.recipes.length,
+                        // itemCount: 25,
+                        itemCount: recipesStore.recipes.length,
                         itemBuilder: (BuildContext context, int index) {
-                          return RecipeCard(recipe: recipeTest);
-                          // return RecipeCard(
-                          //     recipe: recipesStore.recipes[index]);
+                          // return RecipeCard(recipe: recipeTest);
+                          return RecipeCard(
+                              recipe: recipesStore.recipes[index]);
                         },
                       );
                     },

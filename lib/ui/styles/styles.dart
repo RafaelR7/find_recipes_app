@@ -38,9 +38,4 @@ class Styles {
   static TextStyle recipeDetailsBody = TextStyle(
     height: 1.5,
   );
-
-  static TextStyle bottomNavigationTitle = TextStyle(
-    fontFamily: 'Satisfy',
-    color: Colors.white,
-  );
 }

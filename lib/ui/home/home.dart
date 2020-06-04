@@ -38,24 +38,21 @@ class _HomeState extends State<Home> {
             icon: Icon(Icons.restaurant_menu, color: Colors.white),
             title: Text(
               'Recipes',
-              style: TextStyle(
-                  color: Colors.white, fontFamily: 'Satisfy', fontSize: 18),
+              style: TextStyle(color: Colors.white, fontFamily: 'Satisfy'),
             ),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.search, color: Colors.white),
             title: Text(
               'Find Recipe',
-              style: TextStyle(
-                  color: Colors.white, fontFamily: 'Satisfy', fontSize: 18),
+              style: TextStyle(color: Colors.white, fontFamily: 'Satisfy'),
             ),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.bookmark, color: Colors.white),
             title: Text(
               'My Recipes',
-              style: TextStyle(
-                  color: Colors.white, fontFamily: 'Satisfy', fontSize: 18),
+              style: TextStyle(color: Colors.white, fontFamily: 'Satisfy'),
             ),
           ),
         ],
