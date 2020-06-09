@@ -10,26 +10,30 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  int _selectedIndex = 0;
+  int _currentIndex = 0;
+  List<Widget> _children;
+  final pageController = PageController();
 
-  static const List<Widget> _widgetOptions = <Widget>[
-    Recipes(),
-    FindRecipe(),
-    MyRecipes()
-  ];
-
-  void _onItemTapped(int index) {
+  void onPageChanged(int index) {
     setState(() {
-      _selectedIndex = index;
+      _currentIndex = index;
     });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _children = [Recipes(), FindRecipe(), MyRecipes()];
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.orange,
-      body: Center(
-        child: _widgetOptions.elementAt(_selectedIndex),
+      body: PageView(
+        children: _children,
+        controller: pageController,
+        onPageChanged: onPageChanged,
       ),
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: Colors.orange,
@@ -56,8 +60,10 @@ class _HomeState extends State<Home> {
             ),
           ),
         ],
-        currentIndex: _selectedIndex,
-        onTap: _onItemTapped,
+        currentIndex: _currentIndex,
+        onTap: (int index) {
+          pageController.jumpToPage(index);
+        },
         selectedLabelStyle: TextStyle(fontWeight: FontWeight.bold),
       ),
     );

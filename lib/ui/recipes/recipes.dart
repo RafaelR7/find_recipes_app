@@ -13,7 +13,8 @@ class Recipes extends StatefulWidget {
   _RecipesState createState() => _RecipesState();
 }
 
-class _RecipesState extends State<Recipes> {
+class _RecipesState extends State<Recipes>
+    with AutomaticKeepAliveClientMixin<Recipes> {
   final RecipesStore recipesStore = RecipesStore();
 
   @override
@@ -23,7 +24,11 @@ class _RecipesState extends State<Recipes> {
   }
 
   @override
+  bool get wantKeepAlive => true;
+
+  @override
   Widget build(BuildContext context) {
+    super.build(context);
     RecipeModel recipeTest = RecipeModel()
       ..title = 'Test Recipe macarron'
       ..ingredients = [
@@ -39,6 +44,8 @@ class _RecipesState extends State<Recipes> {
       ..servings = 2
       ..readyInMinutes = 45
       ..vegetarian = true
+      ..vegan = true
+      ..dairyFree = true
       ..glutenFree = true
       ..instructions =
           'Wash rice by rubbing the rice between your palms in a bowl of water and draining the water till clear.Blend tomatoes, pepper and garlic and bring to boil till the excess water dries up.Chop OnionsHeat up vegetable oil and pour in chopped onions and fry. Pour in the can of tomato puree and fry.Pour in blended tomato and pepper mix into the pot and stir in. Pour in salt, dry pepper, curry, thyme, bay leaves and maggi cubes.Allow it to simmer on low heat for 3 minutes.Reduce the heat to the lowest level and pour in the washed rice. Pour in the water and stir and leave on low heat for 20 minutes or till the rice is soft.Tip: To get the party rice flavor, increase the heat on the rice and burn the bottom of the pot with the pot covered and stir the rice after 3 minutes of burning.Stir the rice and serve with any protein of your choice.  // <![CDATA[(adsbygoogle = window.adsbygoogle || []).push({});// ]]&gt;A video I shared on Instagram recently';
